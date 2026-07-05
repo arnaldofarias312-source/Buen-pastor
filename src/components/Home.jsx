@@ -1,15 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabase/client'
-import { Home, Calendar, BookOpen, Heart, Church } from 'lucide-react'
 import './Home.css'
-
-const navItems = [
-  { icon: Home, label: 'Inicio' },
-  { icon: Calendar, label: 'Actividades' },
-  { icon: BookOpen, label: 'Biblioteca' },
-  { icon: Heart, label: 'Ayuda' },
-  { icon: Church, label: 'Iglesia' },
-]
 
 function HomePage() {
   const [lema, setLema] = useState(null)
@@ -65,15 +56,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      <nav className="bottom-nav">
-        {navItems.map((item, i) => (
-          <button key={item.label} className={`nav-item${i === 0 ? ' active' : ''}`}>
-            <item.icon className="nav-icon" />
-            <span className="nav-label">{item.label}</span>
-          </button>
-        ))}
-      </nav>
     </div>
   )
 }

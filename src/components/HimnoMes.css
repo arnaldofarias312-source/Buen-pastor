@@ -1,0 +1,82 @@
+.himno-container {
+  height: 100dvh;
+  padding: 1.25rem 1rem 6rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #fafaf9 0%, #f5f0eb 100%);
+}
+
+.himno-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: #d4a853;
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.himno-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  color: #2c1810;
+  text-align: center;
+  margin: 0.5rem 0 0.25rem;
+  font-weight: 700;
+}
+
+.himno-author {
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.himno-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.himno-section {
+  border-left: 3px solid #d4a853;
+  padding-left: 1rem;
+}
+
+.himno-section-label {
+  font-family: 'Georgia', serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #d4a853;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.himno-text {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2c1810;
+  text-align: left;
+  white-space: pre-line;
+  margin: 0;
+}
+
+.himno-coro {
+  font-style: italic;
+  color: #8b6914;
+}
+
+.himno-loading {
+  text-align: center;
+  color: #999;
+  font-family: 'Georgia', serif;
+  margin-top: 2rem;
+}
