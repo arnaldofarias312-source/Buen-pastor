@@ -3,6 +3,7 @@ import { Music, Megaphone, Gem, BookMarked, BookHeart } from 'lucide-react'
 import HimnoMes from './HimnoMes'
 import Devocional from './Devocional'
 import Anuncios from './Anuncios'
+import Versos from './Versos'
 import './Actividades.css'
 
 const cards = [
@@ -26,6 +27,10 @@ function Actividades() {
 
   if (subVista === 'anuncios') {
     return <Anuncios onBack={() => setSubVista(null)} />
+  }
+
+  if (subVista === 'versos') {
+    return <Versos onBack={() => setSubVista(null)} />
   }
 
   return (
