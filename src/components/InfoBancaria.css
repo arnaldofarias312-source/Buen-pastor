@@ -1,9 +1,12 @@
 .bancaria-container {
   height: 100dvh;
-  padding: 1.25rem 1rem 6rem;
+  padding: 2rem 1rem 6rem;
   box-sizing: border-box;
   overflow-y: auto;
   background: linear-gradient(135deg, #fafaf9 0%, #f5f0eb 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bancaria-back {
