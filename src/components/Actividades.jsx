@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Music, Megaphone, Gem, BookMarked, BookHeart } from 'lucide-react'
 import HimnoMes from './HimnoMes'
 import Devocional from './Devocional'
 import Anuncios from './Anuncios'
 import Versos from './Versos'
 import Tesoros from './Tesoros'
+import { useBack } from './navigation'
 import './Actividades.css'
 
 const cards = [
@@ -17,25 +18,38 @@ const cards = [
 
 function Actividades() {
   const [subVista, setSubVista] = useState(null)
+  const { registerBack, clearBack } = useBack()
+
+  function cerrarSubVista() {
+    setSubVista(null)
+    clearBack()
+  }
+
+  useEffect(() => {
+    if (subVista) {
+      window.history.pushState(null, '')
+      registerBack(cerrarSubVista)
+    }
+  }, [subVista])
 
   if (subVista === 'himno') {
-    return <HimnoMes onBack={() => setSubVista(null)} />
+    return <HimnoMes onBack={cerrarSubVista} />
   }
 
   if (subVista === 'devocional') {
-    return <Devocional onBack={() => setSubVista(null)} />
+    return <Devocional onBack={cerrarSubVista} />
   }
 
   if (subVista === 'anuncios') {
-    return <Anuncios onBack={() => setSubVista(null)} />
+    return <Anuncios onBack={cerrarSubVista} />
   }
 
   if (subVista === 'versos') {
-    return <Versos onBack={() => setSubVista(null)} />
+    return <Versos onBack={cerrarSubVista} />
   }
 
   if (subVista === 'tesoros') {
-    return <Tesoros onBack={() => setSubVista(null)} />
+    return <Tesoros onBack={cerrarSubVista} />
   }
 
   return (

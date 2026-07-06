@@ -1,10 +1,9 @@
-import { Home, Calendar, BookOpen, Heart, Church } from 'lucide-react'
+import { Home, Calendar, Wrench, Church } from 'lucide-react'
 
 const navItems = [
   { icon: Home, label: 'Inicio', vista: 'home' },
   { icon: Calendar, label: 'Actividades', vista: 'actividades' },
-  { icon: BookOpen, label: 'Biblioteca', vista: 'biblioteca' },
-  { icon: Heart, label: 'Ayuda', vista: 'ayuda' },
+  { icon: Wrench, label: 'Herramientas', vista: 'herramientas' },
   { icon: Church, label: 'Iglesia', vista: 'iglesia' },
 ]
 
