@@ -44,6 +44,7 @@ function Tesoros({ onBack }) {
 
         <h2 className="tesoros-title">{info.label}</h2>
 
+        <div className="tesoros-contenido">
         <div className="tesoros-versos">
           {entries.length === 0 ? (
             <p className="tesoros-placeholder">No hay versos aún</p>
@@ -62,6 +63,7 @@ function Tesoros({ onBack }) {
             ))
           )}
         </div>
+        </div>
       </div>
     )
   }
@@ -75,6 +77,7 @@ function Tesoros({ onBack }) {
 
       <h2 className="tesoros-title">Tesoros Bíblicos</h2>
 
+      <div className="tesoros-contenido centrado">
       <div className="tesoros-grid">
         {tesorosList.map((t) => (
           <button
@@ -86,6 +89,7 @@ function Tesoros({ onBack }) {
             <span className="tesoro-label">{t.label}</span>
           </button>
         ))}
+      </div>
       </div>
     </div>
   )

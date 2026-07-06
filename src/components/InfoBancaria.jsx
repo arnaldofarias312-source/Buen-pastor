@@ -11,6 +11,7 @@ function InfoBancaria({ onBack }) {
 
       <h2 className="bancaria-title">Información Bancaria</h2>
 
+      <div className="bancaria-contenido">
       <div className="bancaria-card">
         <div className="bancaria-header">
           <Smartphone className="bancaria-header-icon" />
@@ -46,6 +47,7 @@ function InfoBancaria({ onBack }) {
         <p className="bancaria-nota-texto">
           Ofrenda voluntaria para el sostenimiento de la obra del Señor. Dios bendice al dador alegre.
         </p>
+      </div>
       </div>
     </div>
   )
