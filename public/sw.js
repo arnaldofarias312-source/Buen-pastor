@@ -1,7 +1,8 @@
-const CACHE = "buen-pastor-v2";
+const CACHE = "buen-pastor-v3";
 
-self.addEventListener("install", () => {
+self.addEventListener("install", (e) => {
   self.skipWaiting()
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["/", "/index.html"])))
 })
 
 self.addEventListener("activate", (e) => {

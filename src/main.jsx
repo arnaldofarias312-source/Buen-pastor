@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then((r) => r.forEach((sw) => sw.unregister()))
+  navigator.serviceWorker.register('/sw.js')
 }
 
 createRoot(document.getElementById('root')).render(
