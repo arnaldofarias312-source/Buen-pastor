@@ -36,7 +36,7 @@ function HimnoMes({ onBack }) {
               return (
                 <div key={i} className="himno-section">
                   <span className="himno-section-label">{romanos[i] || i + 1}</span>
-                  <p className="himno-text">{estrofa}</p>
+                  <p className="himno-text">{estrofa.replace(/\\n/g, '\n')}</p>
                 </div>
               )
             })}
@@ -44,7 +44,7 @@ function HimnoMes({ onBack }) {
             {himno.coro && (
               <div className="himno-section">
                 <span className="himno-section-label">CORO</span>
-                <p className="himno-text himno-coro">{himno.coro}</p>
+                <p className="himno-text himno-coro">{himno.coro.replace(/\\n/g, '\n')}</p>
               </div>
             )}
           </div>

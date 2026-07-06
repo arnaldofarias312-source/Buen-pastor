@@ -4,6 +4,7 @@ import HimnoMes from './HimnoMes'
 import Devocional from './Devocional'
 import Anuncios from './Anuncios'
 import Versos from './Versos'
+import Tesoros from './Tesoros'
 import './Actividades.css'
 
 const cards = [
@@ -31,6 +32,10 @@ function Actividades() {
 
   if (subVista === 'versos') {
     return <Versos onBack={() => setSubVista(null)} />
+  }
+
+  if (subVista === 'tesoros') {
+    return <Tesoros onBack={() => setSubVista(null)} />
   }
 
   return (

@@ -17,6 +17,14 @@ function Versos({ onBack }) {
     fetchVersos()
   }, [])
 
+  const grupos = {}
+  for (const v of versos) {
+    const key = v.cita || ''
+    if (!grupos[key]) grupos[key] = []
+    grupos[key].push(v)
+  }
+  const entries = Object.entries(grupos)
+
   return (
     <div className="versos-container">
       <button className="versos-back" onClick={onBack}>
@@ -27,14 +35,18 @@ function Versos({ onBack }) {
       <h2 className="versos-title">Versos a Memorizar</h2>
 
       <div className="versos-list">
-        {versos.length === 0 ? (
+        {entries.length === 0 ? (
           <p className="versos-vacio">No hay versos aún</p>
         ) : (
-          versos.map((v) => (
-            <div key={v.id} className="verso-card">
-              {v.numero && <span className="verso-numero">{v.numero}</span>}
-              <p className="verso-texto">{v.texto}</p>
-              <p className="verso-cita">{v.cita}</p>
+          entries.map(([cita, lista]) => (
+            <div key={cita} className="verso-card">
+              <p className="verso-cita">{cita}</p>
+              {lista.map((v) => (
+                <p key={v.id} className="verso-texto">
+                  {v.numero != null && <span className="verso-numero">{v.numero}</span>}
+                  {v.texto}
+                </p>
+              ))}
             </div>
           ))
         )}
