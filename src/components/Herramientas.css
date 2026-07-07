@@ -1,5 +1,6 @@
 .herramientas-container {
   height: 100vh;
+  width: 100%;
   padding: 2rem 1rem 6rem;
   box-sizing: border-box;
   overflow-y: scroll;
