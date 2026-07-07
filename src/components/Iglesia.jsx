@@ -80,7 +80,7 @@ function Iglesia() {
               </div>
             </a>
           ) : (
-            <button
+            <div
               key={card.label}
               className="iglesia-card"
               style={{ borderColor: card.color }}
@@ -91,7 +91,7 @@ function Iglesia() {
                 <span className="iglesia-label">{card.label}</span>
                 <span className="iglesia-desc">{card.desc}</span>
               </div>
-            </button>
+            </div>
           )
         )}
       </div>
