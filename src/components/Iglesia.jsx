@@ -64,21 +64,30 @@ function Iglesia() {
       <h2 className="iglesia-title">Iglesia</h2>
       <div className="iglesia-grid">
         {cards.map((card) => (
-          <a
+          <div
             key={card.label}
             className="iglesia-card"
             style={{ borderColor: card.color }}
-            {...(card.url
-              ? { href: card.url, target: '_blank', rel: 'noopener noreferrer' }
-              : { href: '#', onClick: (e) => { e.preventDefault(); card.subView && setSubVista(card.subView) } }
-            )}
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              if (card.url) { window.open(card.url, '_blank', 'noopener,noreferrer') }
+              else if (card.subView) { setSubVista(card.subView) }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                if (card.url) { window.open(card.url, '_blank', 'noopener,noreferrer') }
+                else if (card.subView) { setSubVista(card.subView) }
+              }
+            }}
           >
             <card.icon className="iglesia-icon" style={{ color: card.color }} />
             <div className="iglesia-info">
               <span className="iglesia-label">{card.label}</span>
               <span className="iglesia-desc">{card.desc}</span>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

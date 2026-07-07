@@ -47,20 +47,26 @@ function Herramientas() {
 
       <div className="herramientas-grid">
         {cards.map((card) => (
-          <a
+          <div
             key={card.label}
-            href={card.url}
-            target="_blank"
-            rel="noopener noreferrer"
             className="herramienta-card"
             style={{ borderColor: card.color }}
+            role="button"
+            tabIndex={0}
+            onClick={() => window.open(card.url, '_blank', 'noopener,noreferrer')}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                window.open(card.url, '_blank', 'noopener,noreferrer')
+              }
+            }}
           >
             <card.icon className="herramienta-icon" style={{ color: card.color }} />
             <div className="herramienta-info">
               <span className="herramienta-label">{card.label}</span>
               <span className="herramienta-desc">{card.desc}</span>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
