@@ -22,7 +22,7 @@
 .iglesia-grid {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .iglesia-card {
@@ -38,7 +38,6 @@
   -webkit-tap-highlight-color: transparent;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.15s, box-shadow 0.15s;
-  font-family: 'Georgia', serif;
 }
 
 .iglesia-card:active {
@@ -52,9 +51,22 @@
   flex-shrink: 0;
 }
 
+.iglesia-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
 .iglesia-label {
+  font-family: 'Georgia', serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: #2c1810;
   letter-spacing: 0.3px;
+}
+
+.iglesia-desc {
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  color: #999;
 }

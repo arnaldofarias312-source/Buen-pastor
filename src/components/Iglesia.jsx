@@ -9,23 +9,27 @@ const cards = [
   {
     icon: MapPin,
     label: 'Ubicación',
+    desc: 'Google Maps',
     color: '#2c7a3e',
     url: 'https://maps.app.goo.gl/kvaXGq7X5AWaro9RA',
   },
   {
     icon: ScrollText,
     label: 'Historia',
+    desc: 'Próximamente',
     color: '#8b6914',
   },
   {
     icon: Church,
     label: 'Reforma Protestante',
+    desc: 'Historia y documentos',
     color: '#1565c0',
     subView: 'reforma',
   },
   {
     icon: CreditCard,
     label: 'Información Bancaria',
+    desc: 'Ofrendas y diezmos',
     color: '#c62828',
     subView: 'bancaria',
   },
@@ -70,7 +74,10 @@ function Iglesia() {
               style={{ borderColor: card.color }}
             >
               <card.icon className="iglesia-icon" style={{ color: card.color }} />
-              <span className="iglesia-label">{card.label}</span>
+              <div className="iglesia-info">
+                <span className="iglesia-label">{card.label}</span>
+                <span className="iglesia-desc">{card.desc}</span>
+              </div>
             </a>
           ) : (
             <button
@@ -80,7 +87,10 @@ function Iglesia() {
               onClick={() => card.subView && setSubVista(card.subView)}
             >
               <card.icon className="iglesia-icon" style={{ color: card.color }} />
-              <span className="iglesia-label">{card.label}</span>
+              <div className="iglesia-info">
+                <span className="iglesia-label">{card.label}</span>
+                <span className="iglesia-desc">{card.desc}</span>
+              </div>
             </button>
           )
         )}
