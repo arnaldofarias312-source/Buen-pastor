@@ -82,7 +82,7 @@ function Iglesia() {
               }
             }}
           >
-            <card.icon className="iglesia-icon" style={{ color: card.color }} />
+            <card.icon className="iglesia-icon" style={{ color: '#b8860b' }} />
             <div className="iglesia-info">
               <span className="iglesia-label">{card.label}</span>
               <span className="iglesia-desc">{card.desc}</span>
