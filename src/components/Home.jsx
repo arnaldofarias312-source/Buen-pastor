@@ -19,7 +19,6 @@ function HomePage() {
 
   return (
     <div className="home">
-      <h1 className="home-title">Iglesia El Buen Pastor</h1>
       <header className="card">
         <span className="card-label">NUESTRA IGLESIA</span>
         <div className="church-logo-wrap">
