@@ -67,7 +67,7 @@ function Iglesia() {
           <div
             key={card.label}
             className="iglesia-card"
-            style={{ borderColor: card.color }}
+            style={{ borderColor: '#b8860b' }}
             role="button"
             tabIndex={0}
             onClick={() => {

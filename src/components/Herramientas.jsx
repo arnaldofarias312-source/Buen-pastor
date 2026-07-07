@@ -50,7 +50,7 @@ function Herramientas() {
           <div
             key={card.label}
             className="herramienta-card"
-            style={{ borderColor: card.color }}
+            style={{ borderColor: '#b8860b' }}
             role="button"
             tabIndex={0}
             onClick={() => window.open(card.url, '_blank', 'noopener,noreferrer')}
