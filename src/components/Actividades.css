@@ -4,7 +4,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   background: linear-gradient(135deg, #fafaf9 0%, #f5f0eb 100%);
 }
 
@@ -13,7 +12,7 @@
   font-size: 1.3rem;
   color: #b8860b;
   text-align: center;
-  margin: 5rem 0 0.5rem;
+  margin: 5rem 0 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
