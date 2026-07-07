@@ -63,37 +63,24 @@ function Iglesia() {
     <div className="iglesia-container">
       <h2 className="iglesia-title">Iglesia</h2>
       <div className="iglesia-grid">
-        {cards.map((card) =>
-          card.url ? (
-            <a
-              key={card.label}
-              href={card.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="iglesia-card"
-              style={{ borderColor: card.color }}
-            >
-              <card.icon className="iglesia-icon" style={{ color: card.color }} />
-              <div className="iglesia-info">
-                <span className="iglesia-label">{card.label}</span>
-                <span className="iglesia-desc">{card.desc}</span>
-              </div>
-            </a>
-          ) : (
-            <div
-              key={card.label}
-              className="iglesia-card"
-              style={{ borderColor: card.color }}
-              onClick={() => card.subView && setSubVista(card.subView)}
-            >
-              <card.icon className="iglesia-icon" style={{ color: card.color }} />
-              <div className="iglesia-info">
-                <span className="iglesia-label">{card.label}</span>
-                <span className="iglesia-desc">{card.desc}</span>
-              </div>
+        {cards.map((card) => (
+          <a
+            key={card.label}
+            className="iglesia-card"
+            style={{ borderColor: card.color }}
+            href={card.url || '#'}
+            {...(card.url ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            onClick={(e) => {
+              if (!card.url) { e.preventDefault(); card.subView && setSubVista(card.subView) }
+            }}
+          >
+            <card.icon className="iglesia-icon" style={{ color: card.color }} />
+            <div className="iglesia-info">
+              <span className="iglesia-label">{card.label}</span>
+              <span className="iglesia-desc">{card.desc}</span>
             </div>
-          )
-        )}
+          </a>
+        ))}
       </div>
     </div>
   )
