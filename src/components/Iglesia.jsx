@@ -68,11 +68,10 @@ function Iglesia() {
             key={card.label}
             className="iglesia-card"
             style={{ borderColor: card.color }}
-            href={card.url || '#'}
-            {...(card.url ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            onClick={(e) => {
-              if (!card.url) { e.preventDefault(); card.subView && setSubVista(card.subView) }
-            }}
+            {...(card.url
+              ? { href: card.url, target: '_blank', rel: 'noopener noreferrer' }
+              : { href: '#', onClick: (e) => { e.preventDefault(); card.subView && setSubVista(card.subView) } }
+            )}
           >
             <card.icon className="iglesia-icon" style={{ color: card.color }} />
             <div className="iglesia-info">

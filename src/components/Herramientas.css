@@ -38,6 +38,8 @@
   -webkit-tap-highlight-color: transparent;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.15s, box-shadow 0.15s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .herramienta-card:active {
