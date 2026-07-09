@@ -74,6 +74,16 @@
   color: #8b6914;
 }
 
+.himno-coro-repeat {
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  color: #b8860b;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
 .himno-loading {
   text-align: center;
   color: #999;

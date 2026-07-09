@@ -34,19 +34,23 @@ function HimnoMes({ onBack }) {
             {Array.isArray(himno.estrofas) && himno.estrofas.map((estrofa, i) => {
               const romanos = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
               return (
-                <div key={i} className="himno-section">
-                  <span className="himno-section-label">{romanos[i] || i + 1}</span>
-                  <p className="himno-text">{estrofa.replace(/\\n/g, '\n')}</p>
+                <div key={i}>
+                  <div className="himno-section">
+                    <span className="himno-section-label">{romanos[i] || i + 1}</span>
+                    <p className="himno-text">{estrofa.replace(/\\n/g, '\n')}</p>
+                  </div>
+                  {himno.coro && i === 0 && (
+                    <div className="himno-section">
+                      <span className="himno-section-label">CORO</span>
+                      <p className="himno-text himno-coro">{himno.coro.replace(/\\n/g, '\n')}</p>
+                    </div>
+                  )}
+                  {himno.coro && i > 0 && (
+                    <p className="himno-coro-repeat">Coro</p>
+                  )}
                 </div>
               )
             })}
-
-            {himno.coro && (
-              <div className="himno-section">
-                <span className="himno-section-label">CORO</span>
-                <p className="himno-text himno-coro">{himno.coro.replace(/\\n/g, '\n')}</p>
-              </div>
-            )}
           </div>
         </>
       ) : (
