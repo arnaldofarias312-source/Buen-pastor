@@ -29,7 +29,7 @@ const cards = [
     icon: Play,
     label: 'Canal de YouTube',
     desc: 'Proyecto Biblia',
-    url: 'https://www.youtube.com/@ProyectoBibliaOficial',
+    url: 'https://www.youtube.com/@ProyectoBibliaOficial/videos',
     color: '#c62828',
   },
 ]
