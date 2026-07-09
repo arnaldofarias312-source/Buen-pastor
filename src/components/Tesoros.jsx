@@ -6,7 +6,6 @@ import './Tesoros.css'
 const tesorosList = [
   { id: 1, label: 'Primer Tesoro Bíblico', tabla: 'tesoro_uno' },
   { id: 2, label: 'Segundo Tesoro Bíblico', tabla: 'tesoro_dos' },
-  { id: 3, label: 'Tercer Tesoro Bíblico', tabla: 'tesoro_tres' },
 ]
 
 function Tesoros({ onBack }) {
