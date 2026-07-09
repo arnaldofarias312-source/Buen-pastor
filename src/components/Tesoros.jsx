@@ -69,12 +69,12 @@ function Tesoros({ onBack }) {
 
   return (
     <div className="tesoros-container">
-      <div className="tesoros-centered">
       <button className="tesoros-back" onClick={onBack}>
         <ArrowLeft size={20} />
         <span>Volver</span>
       </button>
 
+      <div className="tesoros-centered">
       <h2 className="tesoros-title">Tesoros Bíblicos</h2>
 
       <div className="tesoros-contenido">
