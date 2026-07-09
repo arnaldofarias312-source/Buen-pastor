@@ -11,7 +11,7 @@ import './Actividades.css'
 const cards = [
   { id: 'anuncios', icon: Megaphone, label: 'Anuncios de la Semana', color: '#8b6914' },
   { id: 'himno', icon: Music, label: 'Himno del Mes', color: '#d4a853' },
-  { id: 'devocional', icon: BookHeart, label: 'Devocional Tiempo con Dios', color: '#a08030' },
+  { id: 'devocional', icon: BookHeart, label: 'Devocional', color: '#a08030' },
   { id: 'tesoros', icon: Gem, label: 'Tesoros Bíblicos', color: '#b8860b' },
   { id: 'versos', icon: BookMarked, label: 'Versos a Memorizar', color: '#c4a35a' },
 ]
