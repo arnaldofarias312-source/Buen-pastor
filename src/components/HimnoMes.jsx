@@ -40,7 +40,7 @@ function HimnoMes({ onBack }) {
                     <p className="himno-text">{estrofa.replace(/\\n/g, '\n')}</p>
                   </div>
                   {himno.coro && i === 0 && (
-                    <div className="himno-section">
+                    <div className="himno-section himno-coro-first">
                       <span className="himno-section-label">CORO</span>
                       <p className="himno-text himno-coro">{himno.coro.replace(/\\n/g, '\n')}</p>
                     </div>

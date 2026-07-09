@@ -47,6 +47,11 @@
 .himno-section {
   border-left: 3px solid #d4a853;
   padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.himno-coro-first {
+  margin-top: 2rem;
 }
 
 .himno-section-label {
