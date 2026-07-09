@@ -60,7 +60,7 @@ function Actividades() {
           <button
             key={card.id}
             className="actividad-card"
-            style={{ borderColor: card.color }}
+
             onClick={() => setSubVista(card.id)}
           >
             <card.icon className="actividad-icon" style={{ color: card.color }} />
