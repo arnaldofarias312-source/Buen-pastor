@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Music, Megaphone, BookHeart } from 'lucide-react'
+import { Music, Megaphone, Gem, BookMarked, BookHeart } from 'lucide-react'
 import HimnoMes from './HimnoMes'
 import Devocional from './Devocional'
 import Anuncios from './Anuncios'
+import Versos from './Versos'
+import Tesoros from './Tesoros'
 import { useBack } from './navigation'
 import './Actividades.css'
 
@@ -10,6 +12,8 @@ const cards = [
   { id: 'anuncios', icon: Megaphone, label: 'Anuncios de la Semana', color: '#8b6914' },
   { id: 'himno', icon: Music, label: 'Himno del Mes', color: '#d4a853' },
   { id: 'devocional', icon: BookHeart, label: 'Devocional Tiempo con Dios', color: '#a08030' },
+  { id: 'tesoros', icon: Gem, label: 'Tesoros Bíblicos', color: '#b8860b' },
+  { id: 'versos', icon: BookMarked, label: 'Versos a Memorizar', color: '#c4a35a' },
 ]
 
 function Actividades() {
@@ -38,6 +42,14 @@ function Actividades() {
 
   if (subVista === 'anuncios') {
     return <Anuncios onBack={cerrarSubVista} />
+  }
+
+  if (subVista === 'versos') {
+    return <Versos onBack={cerrarSubVista} />
+  }
+
+  if (subVista === 'tesoros') {
+    return <Tesoros onBack={cerrarSubVista} />
   }
 
   return (
