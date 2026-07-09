@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowLeft, Download } from 'lucide-react'
+import { ArrowLeft, Download, Play } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import './Devocional.css'
 
@@ -59,6 +59,16 @@ function Devocional({ onBack }) {
       ) : (
         <p className="devocional-loading">Cargando devocional...</p>
       )}
+
+      <a
+        href="https://www.youtube.com/@elbuenpastorsur2025/videos"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="devocional-youtube"
+      >
+        <Play size={22} />
+        <span>Reflexiones el Buen Pastor</span>
+      </a>
     </div>
   )
 }

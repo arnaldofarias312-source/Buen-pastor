@@ -78,3 +78,33 @@
   font-family: 'Georgia', serif;
   margin-top: 2rem;
 }
+
+.devocional-youtube {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  color: #b8860b;
+  text-decoration: none;
+  border: 2px solid #d4a853;
+  border-radius: 0.75rem;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.devocional-youtube:active {
+  transform: scale(0.98);
+}
+
+.devocional-youtube svg {
+  color: #b8860b;
+  flex-shrink: 0;
+}
