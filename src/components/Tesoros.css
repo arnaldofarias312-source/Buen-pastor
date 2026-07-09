@@ -15,9 +15,7 @@
   flex-direction: column;
 }
 
-.tesoros-contenido.centrado {
-  justify-content: center;
-}
+
 
 .tesoros-back {
   display: inline-flex;

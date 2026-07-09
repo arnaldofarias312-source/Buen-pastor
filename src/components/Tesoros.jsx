@@ -76,7 +76,7 @@ function Tesoros({ onBack }) {
 
       <h2 className="tesoros-title">Tesoros Bíblicos</h2>
 
-      <div className="tesoros-contenido centrado">
+      <div className="tesoros-contenido">
       <div className="tesoros-grid">
         {tesorosList.map((t) => (
           <button
