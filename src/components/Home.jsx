@@ -4,6 +4,8 @@ import './Home.css'
 
 function HomePage() {
   const [lema, setLema] = useState(null)
+  const [plan, setPlan] = useState([])
+  const [planAnio, setPlanAnio] = useState(null)
 
   useEffect(() => {
     async function fetchLema() {
@@ -14,7 +16,18 @@ function HomePage() {
         .single()
       if (data) setLema(data)
     }
+    async function fetchPlan() {
+      const { data } = await supabase
+        .from('plan_espiritual')
+        .select('*')
+        .order('numero')
+      if (data && data.length > 0) {
+        setPlan(data)
+        setPlanAnio(data[0].anio)
+      }
+    }
     fetchLema()
+    fetchPlan()
   }, [])
 
   return (
@@ -27,7 +40,7 @@ function HomePage() {
       </header>
 
       <section className="card">
-        <span className="card-label">TEXTO LEMA 2026</span>
+        <span className="card-label">TEXTO LEMA {lema?.anio || '2026'}</span>
         {lema ? (
           <>
             <p className="verse-text">{lema.texto}</p>
@@ -44,16 +57,33 @@ function HomePage() {
       </section>
 
       <section className="card">
-        <span className="card-label">SERVICIOS</span>
-        <div className="services-content">
-          <div className="service-row">
-            <span className="service-day">Domingos</span>
-            <span className="service-time">9:00am - 11:00am</span>
-          </div>
-          <div className="service-row">
-            <span className="service-day">Miércoles</span>
-            <span className="service-time">5:30pm - 7:00pm</span>
-          </div>
+        <span className="card-label">PLAN ESPIRITUAL {planAnio || '2026'}</span>
+        <div className="plan-content">
+          {plan.length > 0 ? plan.map((item) => (
+            <div key={item.id} className="plan-item">
+              <span className="plan-numero">{item.numero}.</span>
+              <span className="plan-texto">{item.texto}</span>
+            </div>
+          )) : (
+            <>
+              <div className="plan-item">
+                <span className="plan-numero">1.</span>
+                <span className="plan-texto">Buscar a Dios primeramente todos los días.</span>
+              </div>
+              <div className="plan-item">
+                <span className="plan-numero">2.</span>
+                <span className="plan-texto">Guardar nuestro corazón.</span>
+              </div>
+              <div className="plan-item">
+                <span className="plan-numero">3.</span>
+                <span className="plan-texto">Servir con amor.</span>
+              </div>
+              <div className="plan-item">
+                <span className="plan-numero">4.</span>
+                <span className="plan-texto">Predicar el evangelio.</span>
+              </div>
+            </>
+          )}
         </div>
       </section>
     </div>
