@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft, Download, Play } from 'lucide-react'
 import { supabase } from '../supabase/client'
+import { getCached, setCached } from '../utils/cache'
 import './Devocional.css'
 
 function Devocional({ onBack }) {
-  const [dev, setDev] = useState(null)
+  const [dev, setDev] = useState(() => getCached('devocional'))
 
   useEffect(() => {
     async function fetchDev() {
@@ -13,7 +14,10 @@ function Devocional({ onBack }) {
         .select('*')
         .limit(1)
         .single()
-      if (data) setDev(data)
+      if (data) {
+        setDev(data)
+        setCached('devocional', data)
+      }
     }
     fetchDev()
   }, [])

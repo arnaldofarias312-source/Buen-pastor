@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft, Gem } from 'lucide-react'
 import { supabase } from '../supabase/client'
+import { getCached, setCached } from '../utils/cache'
 import './Tesoros.css'
 
 const tesorosList = [
@@ -15,12 +16,16 @@ function Tesoros({ onBack }) {
 
   useEffect(() => {
     if (!info) return
+    setVersos(getCached(info.tabla) || [])
     async function fetchVersos() {
       const { data } = await supabase
         .from(info.tabla)
         .select('*')
         .order('id')
-      if (data) setVersos(data)
+      if (data) {
+        setVersos(data)
+        setCached(info.tabla, data)
+      }
     }
     fetchVersos()
   }, [info])

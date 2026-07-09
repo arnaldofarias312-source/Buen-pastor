@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { supabase } from '../supabase/client'
+import { getCached, setCached } from '../utils/cache'
 import './HimnoMes.css'
 
 function HimnoMes({ onBack }) {
-  const [himno, setHimno] = useState(null)
+  const [himno, setHimno] = useState(() => getCached('himno_mes'))
 
   useEffect(() => {
     async function fetchHimno() {
@@ -13,7 +14,10 @@ function HimnoMes({ onBack }) {
         .select('*')
         .limit(1)
         .single()
-      if (data) setHimno(data)
+      if (data) {
+        setHimno(data)
+        setCached('himno_mes', data)
+      }
     }
     fetchHimno()
   }, [])

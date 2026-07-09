@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabase/client'
+import { getCached, setCached } from '../utils/cache'
 import './Home.css'
 
 function HomePage() {
-  const [lema, setLema] = useState(null)
-  const [plan, setPlan] = useState([])
-  const [planAnio, setPlanAnio] = useState(null)
+  const [lema, setLema] = useState(() => getCached('lema_anual'))
+  const [plan, setPlan] = useState(() => getCached('plan_espiritual') || [])
+  const [planAnio, setPlanAnio] = useState(() => {
+    const p = getCached('plan_espiritual')
+    return p && p.length > 0 ? p[0].anio : null
+  })
 
   useEffect(() => {
     async function fetchLema() {
@@ -14,7 +18,10 @@ function HomePage() {
         .select('*')
         .limit(1)
         .single()
-      if (data) setLema(data)
+      if (data) {
+        setLema(data)
+        setCached('lema_anual', data)
+      }
     }
     async function fetchPlan() {
       const { data } = await supabase
@@ -24,6 +31,7 @@ function HomePage() {
       if (data && data.length > 0) {
         setPlan(data)
         setPlanAnio(data[0].anio)
+        setCached('plan_espiritual', data)
       }
     }
     fetchLema()

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { supabase } from '../supabase/client'
+import { getCached, setCached } from '../utils/cache'
 import './Versos.css'
 
 function Versos({ onBack }) {
-  const [versos, setVersos] = useState([])
+  const [versos, setVersos] = useState(() => getCached('versos_memorizar') || [])
 
   useEffect(() => {
     async function fetchVersos() {
@@ -12,7 +13,10 @@ function Versos({ onBack }) {
         .from('versos_memorizar')
         .select('*')
         .order('id')
-      if (data) setVersos(data)
+      if (data) {
+        setVersos(data)
+        setCached('versos_memorizar', data)
+      }
     }
     fetchVersos()
   }, [])

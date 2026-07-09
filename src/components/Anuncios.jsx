@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { supabase } from '../supabase/client'
+import { getCached, setCached } from '../utils/cache'
 import './Anuncios.css'
 
 const ordenDias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 
 function Anuncios({ onBack }) {
-  const [anuncios, setAnuncios] = useState([])
-  const [semanaInfo, setSemanaInfo] = useState(null)
+  const [anuncios, setAnuncios] = useState(() => getCached('anuncios') || [])
+  const [semanaInfo, setSemanaInfo] = useState(() => getCached('semana_actual'))
 
   useEffect(() => {
     async function fetchAnuncios() {
@@ -15,7 +16,10 @@ function Anuncios({ onBack }) {
         .from('anuncios')
         .select('*')
         .order('id')
-      if (data) setAnuncios(data)
+      if (data) {
+        setAnuncios(data)
+        setCached('anuncios', data)
+      }
     }
     async function fetchSemana() {
       const { data } = await supabase
@@ -23,7 +27,10 @@ function Anuncios({ onBack }) {
         .select('*')
         .limit(1)
         .single()
-      if (data) setSemanaInfo(data)
+      if (data) {
+        setSemanaInfo(data)
+        setCached('semana_actual', data)
+      }
     }
     fetchAnuncios()
     fetchSemana()
