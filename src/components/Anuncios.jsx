@@ -7,6 +7,7 @@ const ordenDias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábad
 
 function Anuncios({ onBack }) {
   const [anuncios, setAnuncios] = useState([])
+  const [semanaInfo, setSemanaInfo] = useState(null)
 
   useEffect(() => {
     async function fetchAnuncios() {
@@ -16,7 +17,16 @@ function Anuncios({ onBack }) {
         .order('id')
       if (data) setAnuncios(data)
     }
+    async function fetchSemana() {
+      const { data } = await supabase
+        .from('semana_actual')
+        .select('*')
+        .limit(1)
+        .single()
+      if (data) setSemanaInfo(data)
+    }
     fetchAnuncios()
+    fetchSemana()
   }, [])
 
   const especiales = anuncios.filter(a => a.tipo === 'especial')
@@ -33,6 +43,9 @@ function Anuncios({ onBack }) {
       </button>
 
       <h2 className="anuncios-title">Anuncios de la Semana</h2>
+      <p className="anuncios-semana">
+        {semanaInfo ? `semana ${semanaInfo.semana} del mes ${semanaInfo.mes}` : 'semana — del mes —'}
+      </p>
 
       {especiales.length > 0 && (
         <div className="anuncios-especiales">
