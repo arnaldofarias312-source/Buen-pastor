@@ -44,7 +44,7 @@ function Anuncios({ onBack }) {
 
       <h2 className="anuncios-title">Anuncios de la Semana</h2>
       <p className="anuncios-semana">
-        {semanaInfo ? `semana del ${semanaInfo.dia_inicio}/${semanaInfo.mes_inicio} al ${semanaInfo.dia_fin}/${semanaInfo.mes_fin}` : 'semana del —/— al —/—'}
+        {semanaInfo ? `(Semana del ${semanaInfo.dia_inicio}/${semanaInfo.mes_inicio} al ${semanaInfo.dia_fin}/${semanaInfo.mes_fin}).` : '(Semana del —/— al —/—).'}
       </p>
 
       {especiales.length > 0 && (
