@@ -69,6 +69,7 @@ function Tesoros({ onBack }) {
 
   return (
     <div className="tesoros-container">
+      <div className="tesoros-centered">
       <button className="tesoros-back" onClick={onBack}>
         <ArrowLeft size={20} />
         <span>Volver</span>
@@ -88,6 +89,7 @@ function Tesoros({ onBack }) {
             <span className="tesoro-label">{t.label}</span>
           </button>
         ))}
+      </div>
       </div>
       </div>
     </div>
