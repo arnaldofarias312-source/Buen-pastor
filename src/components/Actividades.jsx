@@ -63,7 +63,7 @@ function Actividades() {
 
             onClick={() => setSubVista(card.id)}
           >
-            <card.icon className="actividad-icon" style={{ color: card.color }} />
+            <card.icon className="actividad-icon" />
             <span className="actividad-label">{card.label}</span>
           </button>
         ))}
