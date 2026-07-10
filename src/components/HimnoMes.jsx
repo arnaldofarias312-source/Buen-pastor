@@ -31,7 +31,8 @@ function HimnoMes({ onBack }) {
 
       {himno ? (
         <>
-          <h2 className="himno-title">{himno.titulo}</h2>
+          <h2 className="himno-title">Himno del Mes</h2>
+          {himno.mes && <p className="himno-mes">({himno.mes})</p>}
           {himno.autor && <p className="himno-author">{himno.autor}</p>}
 
           <div className="himno-body">

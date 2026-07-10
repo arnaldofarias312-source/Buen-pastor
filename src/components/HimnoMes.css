@@ -30,6 +30,14 @@
   font-weight: 700;
 }
 
+.himno-mes {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  color: #b8860b;
+  text-align: center;
+  margin: 0.3rem 0 0.5rem;
+}
+
 .himno-author {
   font-family: 'Georgia', serif;
   font-size: 0.85rem;
