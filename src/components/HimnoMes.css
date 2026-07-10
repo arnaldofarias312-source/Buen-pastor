@@ -24,7 +24,7 @@
 .himno-title {
   font-family: 'Georgia', serif;
   font-size: 1.5rem;
-  color: #2c1810;
+  color: #b8860b;
   text-align: center;
   margin: 0.5rem 0 0.25rem;
   font-weight: 700;
@@ -35,7 +35,16 @@
   font-size: 1rem;
   color: #b8860b;
   text-align: center;
-  margin: 0.3rem 0 0.5rem;
+  margin: 0.3rem 0 0.3rem;
+}
+
+.himno-nombre {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  color: #2c1810;
+  text-align: center;
+  margin: 0.3rem 0 0.3rem;
+  font-weight: 600;
 }
 
 .himno-author {
