@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft, Gem } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
+import { useBack } from './navigation'
 import './Tesoros.css'
 
 const tesorosList = [
@@ -10,6 +11,7 @@ const tesorosList = [
 ]
 
 function Tesoros({ onBack }) {
+  const { registerBack } = useBack()
   const [tesoroActivo, setTesoroActivo] = useState(null)
   const [versos, setVersos] = useState([])
   const info = tesoroActivo ? tesorosList[tesoroActivo - 1] : null
@@ -41,7 +43,7 @@ function Tesoros({ onBack }) {
 
     return (
       <div className="tesoros-container">
-        <button className="tesoros-back" onClick={() => setTesoroActivo(null)}>
+        <button className="tesoros-back" onClick={() => window.history.back()}>
           <ArrowLeft size={20} />
           <span>Volver</span>
         </button>
@@ -88,7 +90,11 @@ function Tesoros({ onBack }) {
           <button
             key={t.id}
             className="tesoro-card"
-            onClick={() => setTesoroActivo(t.id)}
+            onClick={() => {
+              setTesoroActivo(t.id)
+              window.history.pushState(null, '')
+              registerBack(() => setTesoroActivo(null))
+            }}
           >
             <Gem className="tesoro-icon" />
             <span className="tesoro-label">{t.label}</span>

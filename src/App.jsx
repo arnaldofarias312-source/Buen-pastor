@@ -10,19 +10,19 @@ import './App.css'
 function App() {
   const [vista, setVista] = useState('home')
   const historial = useRef(['home'])
-  const backHandler = useRef(null)
+  const backHandler = useRef([])
 
   const registerBack = useCallback((handler) => {
-    backHandler.current = handler
+    backHandler.current.push(handler)
   }, [])
 
   const clearBack = useCallback(() => {
-    backHandler.current = null
+    backHandler.current = []
   }, [])
 
   function navegar(nuevaVista) {
     if (nuevaVista === vista) return
-    backHandler.current = null
+    backHandler.current = []
     historial.current.push(nuevaVista)
     window.history.pushState(null, '')
     setVista(nuevaVista)
@@ -30,8 +30,8 @@ function App() {
 
   useEffect(() => {
     function volver() {
-      if (backHandler.current) {
-        backHandler.current()
+      if (backHandler.current.length > 0) {
+        backHandler.current.pop()()
       } else if (historial.current.length > 1) {
         historial.current.pop()
         setVista(historial.current[historial.current.length - 1])
