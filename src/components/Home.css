@@ -95,13 +95,10 @@
   padding: 0.15rem 0;
 }
 
-.plan-numero {
-  font-family: 'Georgia', serif;
-  font-size: 1rem;
+.plan-icon {
   color: #d4a853;
-  font-weight: 700;
   flex-shrink: 0;
-  min-width: 1.2rem;
+  margin-top: 0.2rem;
 }
 
 .plan-texto {

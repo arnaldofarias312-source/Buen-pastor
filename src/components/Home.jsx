@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react'
+import { Search, Shield, HandHeart, BookOpenText } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
 import './Home.css'
+
+const planIcons = {
+  1: Search,
+  2: Shield,
+  3: HandHeart,
+  4: BookOpenText,
+}
 
 function HomePage() {
   const [lema, setLema] = useState(() => getCached('lema_anual'))
@@ -67,27 +75,30 @@ function HomePage() {
       <section className="card">
         <span className="card-label">PLAN ESPIRITUAL {planAnio || '2026'}</span>
         <div className="plan-content">
-          {plan.length > 0 ? plan.map((item) => (
-            <div key={item.id} className="plan-item">
-              <span className="plan-numero">{item.numero}.</span>
-              <span className="plan-texto">{item.texto}</span>
-            </div>
-          )) : (
+          {plan.length > 0 ? plan.map((item) => {
+            const Icon = planIcons[item.numero]
+            return (
+              <div key={item.id} className="plan-item">
+                {Icon ? <Icon className="plan-icon" size={18} /> : <span className="plan-numero">{item.numero}.</span>}
+                <span className="plan-texto">{item.texto}</span>
+              </div>
+            )
+          }) : (
             <>
               <div className="plan-item">
-                <span className="plan-numero">1.</span>
+                <Search className="plan-icon" size={18} />
                 <span className="plan-texto">Buscar a Dios primeramente todos los días.</span>
               </div>
               <div className="plan-item">
-                <span className="plan-numero">2.</span>
+                <Shield className="plan-icon" size={18} />
                 <span className="plan-texto">Guardar nuestro corazón.</span>
               </div>
               <div className="plan-item">
-                <span className="plan-numero">3.</span>
+                <HandHeart className="plan-icon" size={18} />
                 <span className="plan-texto">Servir con amor.</span>
               </div>
               <div className="plan-item">
-                <span className="plan-numero">4.</span>
+                <BookOpenText className="plan-icon" size={18} />
                 <span className="plan-texto">Predicar el evangelio.</span>
               </div>
             </>

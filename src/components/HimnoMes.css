@@ -6,6 +6,13 @@
   background: linear-gradient(135deg, #fafaf9 0%, #f5f0eb 100%);
 }
 
+.himno-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
 .himno-back {
   display: inline-flex;
   align-items: center;
@@ -17,8 +24,13 @@
   font-size: 0.95rem;
   cursor: pointer;
   padding: 0.5rem 0;
-  margin-bottom: 0.5rem;
   -webkit-tap-highlight-color: transparent;
+}
+
+.himno-top-mes {
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  color: #b8860b;
 }
 
 .himno-title {
@@ -26,16 +38,8 @@
   font-size: 1.5rem;
   color: #b8860b;
   text-align: center;
-  margin: 0.5rem 0 0.25rem;
+  margin: 0.5rem 0 1.5rem;
   font-weight: 700;
-}
-
-.himno-mes {
-  font-family: 'Georgia', serif;
-  font-size: 1rem;
-  color: #b8860b;
-  text-align: center;
-  margin: 0.3rem 0 2rem;
 }
 
 .himno-nombre {

@@ -24,15 +24,17 @@ function HimnoMes({ onBack }) {
 
   return (
     <div className="himno-container">
-      <button className="himno-back" onClick={onBack}>
-        <ArrowLeft size={20} />
-        <span>Volver</span>
-      </button>
+      <div className="himno-top">
+        <button className="himno-back" onClick={onBack}>
+          <ArrowLeft size={20} />
+          <span>Volver</span>
+        </button>
+        {himno?.mes && <span className="himno-top-mes">{himno.mes}.</span>}
+      </div>
 
       {himno ? (
         <>
           <h2 className="himno-title">Himno del Mes</h2>
-          {himno.mes && <p className="himno-mes">({himno.mes})</p>}
           <p className="himno-nombre">{himno.titulo}</p>
           {himno.autor && <p className="himno-author">{himno.autor}</p>}
 
