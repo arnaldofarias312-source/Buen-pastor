@@ -25,7 +25,7 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-header">
           <Smartphone className="bancaria-header-icon" />
           <span className="bancaria-header-label">Pago Móvil</span>
-          <Copy className="bancaria-copy" size={16} onClick={() => copiar('0416-0430859', 'Pago móvil copiado')} />
+          <Copy className="bancaria-copy" size={16} onClick={() => copiar('0102 16627437 04160430859', 'Pago móvil copiado')} />
         </div>
         <div className="bancaria-row">
           <span className="bancaria-key">Banco</span>
