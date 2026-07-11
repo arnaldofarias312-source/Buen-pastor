@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
+import SkeletonLoader from './SkeletonLoader'
 import './Versos.css'
 
 function Versos({ onBack }) {
   const [versos, setVersos] = useState(() => getCached('versos_memorizar') || [])
+  const [loading, setLoading] = useState(!getCached('versos_memorizar'))
 
   useEffect(() => {
     async function fetchVersos() {
@@ -17,6 +19,7 @@ function Versos({ onBack }) {
         setVersos(data)
         setCached('versos_memorizar', data)
       }
+      setLoading(false)
     }
     fetchVersos()
   }, [])
@@ -38,6 +41,11 @@ function Versos({ onBack }) {
 
       <h2 className="versos-title">Versos a Memorizar</h2>
 
+      {loading ? (
+        <div className="versos-loading">
+          <SkeletonLoader type="verso" count={3} />
+        </div>
+      ) : (
       <div className="versos-list">
         {entries.length === 0 ? (
           <p className="versos-vacio">No hay versos aún</p>
@@ -55,6 +63,7 @@ function Versos({ onBack }) {
           ))
         )}
       </div>
+      )}
     </div>
   )
 }

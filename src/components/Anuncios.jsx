@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
+import SkeletonLoader from './SkeletonLoader'
 import './Anuncios.css'
 
 const ordenDias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
@@ -9,6 +10,7 @@ const ordenDias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábad
 function Anuncios({ onBack }) {
   const [anuncios, setAnuncios] = useState(() => getCached('anuncios') || [])
   const [semanaInfo, setSemanaInfo] = useState(() => getCached('semana_actual'))
+  const [loading, setLoading] = useState(!getCached('anuncios'))
 
   useEffect(() => {
     async function fetchAnuncios() {
@@ -20,6 +22,7 @@ function Anuncios({ onBack }) {
         setAnuncios(data)
         setCached('anuncios', data)
       }
+      setLoading(false)
     }
     async function fetchSemana() {
       const { data } = await supabase
@@ -54,6 +57,14 @@ function Anuncios({ onBack }) {
         {semanaInfo ? `(Semana del ${semanaInfo.dia_inicio}/${semanaInfo.mes_inicio} al ${semanaInfo.dia_fin}/${semanaInfo.mes_fin}).` : '(Semana del —/— al —/—).'}
       </p>
 
+      {loading && (
+        <div className="anuncios-loading">
+          <SkeletonLoader type="anuncio" count={5} />
+        </div>
+      )}
+
+      {!loading && (
+        <>
       {especiales.length > 0 && (
         <div className="anuncios-especiales">
           <span className="anuncios-especiales-label">AVISOS ESPECIALES</span>
@@ -83,6 +94,8 @@ function Anuncios({ onBack }) {
           </div>
         ))}
       </div>
+        </>
+      )}
     </div>
   )
 }

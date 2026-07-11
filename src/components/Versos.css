@@ -72,6 +72,10 @@
   font-size: 0.9rem;
 }
 
+.versos-loading {
+  padding: 1rem 0;
+}
+
 .versos-vacio {
   text-align: center;
   color: #999;

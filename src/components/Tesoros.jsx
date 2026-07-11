@@ -3,6 +3,7 @@ import { ArrowLeft, Gem } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
 import { useBack } from './navigation'
+import SkeletonLoader from './SkeletonLoader'
 import './Tesoros.css'
 
 const tesorosList = [
@@ -14,11 +15,18 @@ function Tesoros({ onBack }) {
   const { registerBack } = useBack()
   const [tesoroActivo, setTesoroActivo] = useState(null)
   const [versos, setVersos] = useState([])
+  const [loading, setLoading] = useState(false)
   const info = tesoroActivo ? tesorosList[tesoroActivo - 1] : null
 
   useEffect(() => {
     if (!info) return
-    setVersos(getCached(info.tabla) || [])
+    const cached = getCached(info.tabla)
+    if (cached) {
+      setVersos(cached)
+      setLoading(false)
+    } else {
+      setLoading(true)
+    }
     async function fetchVersos() {
       const { data } = await supabase
         .from(info.tabla)
@@ -28,6 +36,7 @@ function Tesoros({ onBack }) {
         setVersos(data)
         setCached(info.tabla, data)
       }
+      setLoading(false)
     }
     fetchVersos()
   }, [info])
@@ -50,6 +59,11 @@ function Tesoros({ onBack }) {
 
         <h2 className="tesoros-title">{info.label}</h2>
 
+        {loading ? (
+          <div className="tesoros-loading">
+            <SkeletonLoader type="tesoro" count={3} />
+          </div>
+        ) : (
         <div className="tesoros-contenido">
         <div className="tesoros-versos">
           {entries.length === 0 ? (
@@ -70,6 +84,7 @@ function Tesoros({ onBack }) {
           )}
         </div>
         </div>
+        )}
       </div>
     )
   }

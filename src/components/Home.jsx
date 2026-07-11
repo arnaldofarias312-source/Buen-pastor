@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Search, Shield, HandHeart, BookOpenText } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
+import SkeletonLoader from './SkeletonLoader'
 import './Home.css'
 
 const planIcons = {
@@ -18,6 +19,7 @@ function HomePage() {
     const p = getCached('plan_espiritual')
     return p && p.length > 0 ? p[0].anio : null
   })
+  const [loading, setLoading] = useState(!getCached('lema_anual') || !getCached('plan_espiritual'))
 
   useEffect(() => {
     async function fetchLema() {
@@ -41,6 +43,7 @@ function HomePage() {
         setPlanAnio(data[0].anio)
         setCached('plan_espiritual', data)
       }
+      setLoading(false)
     }
     fetchLema()
     fetchPlan()
@@ -74,6 +77,9 @@ function HomePage() {
 
       <section className="card">
         <span className="card-label">PLAN ESPIRITUAL {planAnio || '2026'}</span>
+        {loading && !getCached('plan_espiritual') ? (
+          <SkeletonLoader type="plan" count={4} />
+        ) : (
         <div className="plan-content">
           {plan.length > 0 ? plan.map((item) => {
             const Icon = planIcons[item.numero]
@@ -104,6 +110,7 @@ function HomePage() {
             </>
           )}
         </div>
+        )}
       </section>
     </div>
   )

@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft, Download, Play } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
+import SkeletonLoader from './SkeletonLoader'
 import './Devocional.css'
 
 function Devocional({ onBack }) {
   const [dev, setDev] = useState(() => getCached('devocional'))
+  const [loading, setLoading] = useState(!getCached('devocional'))
 
   useEffect(() => {
     async function fetchDev() {
@@ -18,6 +20,7 @@ function Devocional({ onBack }) {
         setDev(data)
         setCached('devocional', data)
       }
+      setLoading(false)
     }
     fetchDev()
   }, [])
@@ -47,7 +50,11 @@ function Devocional({ onBack }) {
         <span>Volver</span>
       </button>
 
-      {dev ? (
+      {loading ? (
+        <div className="devocional-cargando">
+          <SkeletonLoader type="text" count={3} />
+        </div>
+      ) : dev ? (
         <div className="devocional-card">
           <span className="devocional-label">DEVOCIONAL TIEMPO CON DIOS</span>
           <img
@@ -60,9 +67,7 @@ function Devocional({ onBack }) {
             Descargar Imagen
           </button>
         </div>
-      ) : (
-        <p className="devocional-loading">Cargando devocional...</p>
-      )}
+      ) : null}
 
       <a
         href="https://www.youtube.com/@elbuenpastorsur2025/videos"

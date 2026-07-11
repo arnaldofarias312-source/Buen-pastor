@@ -80,6 +80,11 @@
   color: #2c1810;
 }
 
+.tesoros-loading {
+  width: 100%;
+  padding: 1rem;
+}
+
 .tesoros-placeholder {
   text-align: center;
   color: #999;

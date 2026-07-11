@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { supabase } from '../supabase/client'
 import { getCached, setCached } from '../utils/cache'
+import SkeletonLoader from './SkeletonLoader'
 import './HimnoMes.css'
 
 function HimnoMes({ onBack }) {
   const [himno, setHimno] = useState(() => getCached('himno_mes'))
+  const [loading, setLoading] = useState(!getCached('himno_mes'))
 
   useEffect(() => {
     async function fetchHimno() {
@@ -18,6 +20,7 @@ function HimnoMes({ onBack }) {
         setHimno(data)
         setCached('himno_mes', data)
       }
+      setLoading(false)
     }
     fetchHimno()
   }, [])
@@ -32,7 +35,9 @@ function HimnoMes({ onBack }) {
         {himno?.mes && <span className="himno-top-mes">{himno.mes}.</span>}
       </div>
 
-      {himno ? (
+      {loading ? (
+        <SkeletonLoader type="himno" />
+      ) : himno ? (
         <>
           <h2 className="himno-title">Himno del Mes</h2>
           <p className="himno-nombre">{himno.titulo}</p>
@@ -61,9 +66,7 @@ function HimnoMes({ onBack }) {
             })}
           </div>
         </>
-      ) : (
-        <p className="himno-loading">Cargando himno...</p>
-      )}
+      ) : null}
     </div>
   )
 }

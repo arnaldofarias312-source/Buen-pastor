@@ -40,6 +40,10 @@
   font-weight: 600;
 }
 
+.anuncios-loading {
+  padding: 1rem 0;
+}
+
 .anuncios-especiales {
   background: #fff8e7;
   border-radius: 0.75rem;

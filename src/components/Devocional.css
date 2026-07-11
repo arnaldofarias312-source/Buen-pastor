@@ -21,6 +21,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.devocional-cargando {
+  padding: 2rem 0;
+}
+
 .devocional-card {
   background: white;
   border-radius: 1rem;
