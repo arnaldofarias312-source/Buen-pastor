@@ -25,7 +25,7 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-header">
           <Smartphone className="bancaria-header-icon" />
           <span className="bancaria-header-label">Pago Móvil</span>
-          <Copy className="bancaria-copy" size={16} onClick={() => copiar('0102 16627437 04160430859', 'Pago móvil copiado')} />
+          <Copy className="bancaria-copy" size={20} onClick={() => copiar('0102 16627437 04160430859', 'Pago móvil copiado')} />
         </div>
         <div className="bancaria-row">
           <span className="bancaria-key">Banco</span>
@@ -45,7 +45,7 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-header">
           <Building className="bancaria-header-icon" />
           <span className="bancaria-header-label">Número de Cuenta</span>
-          <Copy className="bancaria-copy" size={16} onClick={() => copiar('0102 0645 6000 0030 7978', 'Número de cuenta copiado')} />
+          <Copy className="bancaria-copy" size={20} onClick={() => copiar('0102 0645 6000 0030 7978', 'Número de cuenta copiado')} />
         </div>
         <div className="bancaria-row">
           <span className="bancaria-key">N° de Cuenta</span>
