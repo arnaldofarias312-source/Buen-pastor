@@ -44,7 +44,7 @@ function InfoBancaria({ onBack }) {
       <div className="bancaria-card">
         <div className="bancaria-header">
           <Building className="bancaria-header-icon" />
-          <span className="bancaria-header-label">Cuenta Bancaria</span>
+          <span className="bancaria-header-label">Número de Cuenta</span>
           <Copy className="bancaria-copy" size={16} onClick={() => copiar('0102 0645 6000 0030 7978', 'Número de cuenta copiado')} />
         </div>
         <div className="bancaria-row">
