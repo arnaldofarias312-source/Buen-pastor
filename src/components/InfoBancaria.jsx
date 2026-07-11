@@ -1,11 +1,16 @@
+import { useState } from 'react'
 import { ArrowLeft, Copy, CreditCard, Smartphone, Building } from 'lucide-react'
 import './InfoBancaria.css'
 
-function copyTexto(texto) {
-  navigator.clipboard.writeText(texto).catch(() => {})
-}
-
 function InfoBancaria({ onBack }) {
+  const [copiedMsg, setCopiedMsg] = useState('')
+
+  function copiar(texto, mensaje) {
+    navigator.clipboard.writeText(texto).catch(() => {})
+    setCopiedMsg(mensaje)
+    setTimeout(() => setCopiedMsg(''), 2000)
+  }
+
   return (
     <div className="bancaria-container">
       <button className="bancaria-back" onClick={onBack}>
@@ -20,6 +25,7 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-header">
           <Smartphone className="bancaria-header-icon" />
           <span className="bancaria-header-label">Pago Móvil</span>
+          <Copy className="bancaria-copy" size={16} onClick={() => copiar('0416-0430859', 'Pago móvil copiado')} />
         </div>
         <div className="bancaria-row">
           <span className="bancaria-key">Banco</span>
@@ -32,7 +38,6 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-row">
           <span className="bancaria-key">Teléfono</span>
           <span className="bancaria-value">0416-0430859</span>
-          <Copy className="bancaria-copy" size={16} onClick={() => copyTexto('0416-0430859')} />
         </div>
       </div>
 
@@ -40,11 +45,11 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-header">
           <Building className="bancaria-header-icon" />
           <span className="bancaria-header-label">Cuenta Bancaria</span>
+          <Copy className="bancaria-copy" size={16} onClick={() => copiar('0102 0645 6000 0030 7978', 'Número de cuenta copiado')} />
         </div>
         <div className="bancaria-row">
           <span className="bancaria-key">N° de Cuenta</span>
           <span className="bancaria-value bancaria-cuenta">0102 0645 6000 0030 7978</span>
-          <Copy className="bancaria-copy" size={16} onClick={() => copyTexto('0102 0645 6000 0030 7978')} />
         </div>
       </div>
 
@@ -55,6 +60,8 @@ function InfoBancaria({ onBack }) {
         </p>
       </div>
       </div>
+
+      {copiedMsg && <div className="bancaria-toast">{copiedMsg}</div>}
     </div>
   )
 }
