@@ -66,7 +66,7 @@ function Anuncios({ onBack }) {
         <>
       {especiales.length > 0 && (
         <div className="anuncios-especiales">
-          <span className="anuncios-especiales-label">AVISOS ESPECIALES</span>
+          <span className="anuncios-especiales-label">ANUNCIOS ESPECIALES</span>
           {especiales.map((item) => (
             <div key={item.id} className="anuncios-item especial">
               {item.titulo && <strong className="anuncios-titulo">{item.titulo}</strong>}
