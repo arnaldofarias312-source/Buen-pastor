@@ -50,7 +50,7 @@ function Herramientas() {
           <div
             key={card.label}
             className="herramienta-card"
-            style={{ borderColor: '#b8860b' }}
+            style={{ borderColor: '#d4a853' }}
             role="button"
             tabIndex={0}
             onClick={() => window.open(card.url, '_blank', 'noopener,noreferrer')}
@@ -61,7 +61,7 @@ function Herramientas() {
               }
             }}
           >
-            <card.icon className="herramienta-icon" style={{ color: '#b8860b' }} />
+            <card.icon className="herramienta-icon" style={{ color: '#d4a853' }} />
             <div className="herramienta-info">
               <span className="herramienta-label">{card.label}</span>
               <span className="herramienta-desc">{card.desc}</span>
