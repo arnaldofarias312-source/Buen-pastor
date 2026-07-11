@@ -40,10 +40,9 @@ function Anuncios({ onBack }) {
   }, [])
 
   const especiales = anuncios.filter(a => a.tipo === 'especial')
-  const normales = ordenDias.map(dia => ({
-    dia,
-    items: anuncios.filter(a => a.dia === dia && a.tipo !== 'especial')
-  }))
+  const normales = ordenDias
+    .map(dia => ({ dia, items: anuncios.filter(a => a.dia === dia && a.tipo !== 'especial') }))
+    .filter(({ items }) => items.length > 0)
 
   return (
     <div className="anuncios-container">
@@ -81,16 +80,12 @@ function Anuncios({ onBack }) {
         {normales.map(({ dia, items }) => (
           <div key={dia} className="anuncios-dia">
             <span className="anuncios-dia-label">{dia}</span>
-            {items.length === 0 ? (
-              <p className="anuncios-vacio">—</p>
-            ) : (
-              items.map((item) => (
-                <div key={item.id} className="anuncios-item">
-                  {item.titulo && <strong className="anuncios-titulo">{item.titulo}</strong>}
-                  <p className="anuncios-texto">{item.contenido}</p>
-                </div>
-              ))
-            )}
+            {items.map((item) => (
+              <div key={item.id} className="anuncios-item">
+                {item.titulo && <strong className="anuncios-titulo">{item.titulo}</strong>}
+                <p className="anuncios-texto">{item.contenido}</p>
+              </div>
+            ))}
           </div>
         ))}
       </div>
