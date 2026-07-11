@@ -1,5 +1,9 @@
-import { ArrowLeft, CreditCard, Smartphone, Building } from 'lucide-react'
+import { ArrowLeft, Copy, CreditCard, Smartphone, Building } from 'lucide-react'
 import './InfoBancaria.css'
+
+function copyTexto(texto) {
+  navigator.clipboard.writeText(texto).catch(() => {})
+}
 
 function InfoBancaria({ onBack }) {
   return (
@@ -28,6 +32,7 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-row">
           <span className="bancaria-key">Teléfono</span>
           <span className="bancaria-value">0416-0430859</span>
+          <Copy className="bancaria-copy" size={16} onClick={() => copyTexto('0416-0430859')} />
         </div>
       </div>
 
@@ -39,6 +44,7 @@ function InfoBancaria({ onBack }) {
         <div className="bancaria-row">
           <span className="bancaria-key">N° de Cuenta</span>
           <span className="bancaria-value bancaria-cuenta">0102 0645 6000 0030 7978</span>
+          <Copy className="bancaria-copy" size={16} onClick={() => copyTexto('0102 0645 6000 0030 7978')} />
         </div>
       </div>
 

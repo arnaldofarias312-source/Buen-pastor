@@ -74,9 +74,27 @@
 
 .bancaria-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 0;
+}
+
+.bancaria-row .bancaria-key {
+  margin-right: auto;
+}
+
+.bancaria-copy {
+  color: #d4a853;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bancaria-copy:hover,
+.bancaria-copy:active {
+  opacity: 1;
 }
 
 .bancaria-row + .bancaria-row {
